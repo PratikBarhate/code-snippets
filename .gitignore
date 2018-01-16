@@ -17,7 +17,7 @@
 *.gz
 *.iso
 *.rar
-#*.tar
+*.tar
 *.zip
 
 # Logs and databases #
@@ -42,6 +42,10 @@ tmtagsHistory
 
 # IntelliJ
 out/
+.idea/
+*.iml
+*.iws
+**/.idea/
 
 # Mongo Explorer plugin:
 .idea/**/mongoSettings.xml
@@ -64,3 +68,26 @@ out/
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Maven
+log/
+target/
+
+#### scala ####
+*.class
+*.log
