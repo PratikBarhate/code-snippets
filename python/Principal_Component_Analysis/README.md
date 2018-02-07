@@ -10,3 +10,4 @@
 1. python - v3.6.3
 2. pandas - v0.21.0
 3. numpy - v1.13.3
+4. sklearn - v0.19.1

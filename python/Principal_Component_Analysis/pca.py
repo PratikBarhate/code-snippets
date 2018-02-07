@@ -3,7 +3,6 @@ import numpy
 from sklearn.preprocessing import StandardScaler
 
 # load data
-# f = number of total features
 # k = number of features after dimensionality reduction
 iris_df = pandas.read_csv(
     filepath_or_buffer="/Users/tkmahxk/Pratik/Study/Projects/ml-snippets/python/dataset/IrisData.csv",
@@ -45,7 +44,6 @@ print("\n* Using correlation matrix (EVD)\nEigen Values -> {0}\nEigen Vectors ::
 # Make a list of (eigen-value, eigen-vector) tuples
 # sort by eigen-values (first element in the tuple), in descending order
 # vectors are converted to shape(1, 4)
-# TODO generalise this reshape for any number of features
 eig_pairs = [(numpy.abs(eig_vals_cor[i]), eig_vecs_cor[:, i]) for i in range(len(eig_vals_cor))]
 eig_pairs.sort(key=lambda x: x[0], reverse=True)
 print("\n* Making sure visually eigen values are arrange in descending order")
