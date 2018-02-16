@@ -5,16 +5,23 @@ package spark
  * Dataset is named `adult_train` and `adult_test` in folder "src/main/resources/dataset"
  */
 
+import org.apache.log4j.{Level, Logger}
+
 import scala.collection.mutable.ListBuffer
 import org.apache.spark.sql.{Column, Encoders, SparkSession}
-import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.{Pipeline, PipelineStage}
 import org.apache.spark.ml.feature.OneHotEncoder
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.feature.StringIndexer
 import org.apache.spark.ml.feature.VectorAssembler
-import org.apache.spark.sql.functions.{trim, when, length, col}
+import org.apache.spark.sql.functions.{col, length, trim, when}
 
 object LogisticReg {
+
+  // Removes spark logs that bloat the console.
+  Logger.getLogger("akka").setLevel(Level.OFF)
+  Logger.getLogger("org").setLevel(Level.OFF)
+  Logger.getLogger("breeze").setLevel(Level.OFF)
 
   case class Schema(age: Double,
                     workclass: String,
@@ -72,7 +79,7 @@ object LogisticReg {
       withColumn("income", emptyToNull(col("income"))).na.drop
 
     // Stages in Pipeline
-    val stages: ListBuffer[Any] = new ListBuffer[Any]
+    val stages: ListBuffer[PipelineStage] = new ListBuffer[PipelineStage]
 
     val categoricalColumns: List[String] = List("workclass", "education",
       "marital_status", "occupation", "relationship", "race", "sex", "native_country")
@@ -96,18 +103,7 @@ object LogisticReg {
     val assembler = new VectorAssembler().setInputCols(assemblerInputs.toArray).setOutputCol("features")
     stages += assembler
 
-    val pipeline = new Pipeline().setStages(
-      Array(
-        stages.head.asInstanceOf[StringIndexer], stages(1).asInstanceOf[OneHotEncoder],
-        stages(2).asInstanceOf[StringIndexer], stages(3).asInstanceOf[OneHotEncoder],
-        stages(4).asInstanceOf[StringIndexer], stages(5).asInstanceOf[OneHotEncoder],
-        stages(6).asInstanceOf[StringIndexer], stages(7).asInstanceOf[OneHotEncoder],
-        stages(8).asInstanceOf[StringIndexer], stages(9).asInstanceOf[OneHotEncoder],
-        stages(10).asInstanceOf[StringIndexer], stages(11).asInstanceOf[OneHotEncoder],
-        stages(12).asInstanceOf[StringIndexer], stages(13).asInstanceOf[OneHotEncoder],
-        stages(14).asInstanceOf[StringIndexer], stages(15).asInstanceOf[OneHotEncoder],
-        stages(16).asInstanceOf[StringIndexer], stages(17).asInstanceOf[VectorAssembler])
-    )
+    val pipeline = new Pipeline().setStages(stages.toArray)
 
     // Fit the pipeline
     val pipelineModel = pipeline.fit(trainDataDf)
