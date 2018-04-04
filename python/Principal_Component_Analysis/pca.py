@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 
 # load data
 # k = number of features after dimensionality reduction
+# change the file path as required
 iris_df = pandas.read_csv(
     filepath_or_buffer="/Users/tkmahxk/Pratik/Study/Projects/ml-snippets/python/dataset/IrisData.csv",
     header=None, sep=",")
@@ -30,7 +31,7 @@ eig_vals, eig_vecs = numpy.linalg.eig(cov_mat)
 print("\n* Using Eigen Value Decomposition\nEigen Values -> {0}\nEigen Vectors ::\n{1}".format(eig_vals, eig_vecs))
 
 # computing eigen values and eigen vectors, using singular value decomposition
-# If the data matrix is centered to have zero mean then EVD (PCA) and the SVD are exactly the same.
+# If the data matrix is centered to have zero mean then EVD and the SVD are exactly the same.
 # using eigen value decomposition is a better way, if you cannot verify the mean is tending to zero
 u, s, v = numpy.linalg.svd(cov_mat)
 print("\n* Using Singular Value Decomposition\nEigen Values -> {0}\nEigen Vectors ::\n{1}".format(s, v))
