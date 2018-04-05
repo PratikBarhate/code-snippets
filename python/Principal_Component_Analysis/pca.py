@@ -63,9 +63,9 @@ while k < eig_vals.size and cp < 95.0:
     cp = (total/sum_eign_vals) * 100
     print("\n* Cumulative percent for first {0} vector/s is {1}".format(k+1, cp))
     k = k + 1
-# value of `i + 1` number of vectors are to be selected
-# get the first i elements from `eig_pairs`
-# We will get vectors in the shape(1, 4), we want to reshape to (4, 1) as we want a cplumn to be a vector
+# value of `k + 1` number of vectors are to be selected
+# get the first k elements from `eig_pairs`
+# We will get vectors in the shape(1, 4), we want to reshape to (4, 1) as we want a column to be a vector
 sel_vecs = [eig_pairs[i][1].reshape(4, 1) for i in range(0, k)]
 # w = all the required vectors stacked horizontally
 w = numpy.hstack(tuple(sel_vecs))
