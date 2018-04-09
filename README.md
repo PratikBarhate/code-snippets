@@ -2,8 +2,8 @@
 Short machine learning code snippets - python, spark(scala)
 
 ## Implementations in python
-1. PCA
-2. Visualization using Matplotlib
+1. PCA (Principal Component Analysis)
+2. LDA (Linear Discrminant Analysis)
 
 ## Implementations in scala (spark)
 1. Logistic Regression (On UCI Adult Dataset)
@@ -16,6 +16,4 @@ Short machine learning code snippets - python, spark(scala)
 
 #### scala dependencies
 1. Maven - v3.5.2 (All other dependencies are already added in the pom, hence maven handles rest.)
-2. Spark Core - v2.2.0
-3. Sparl SQL - v2.2.0
-4. Spark MLlib - v2.2.0
+2. You need to install Apache Spark - v2.3.0 locally

@@ -91,3 +91,7 @@ target/
 #### scala ####
 *.class
 *.log
+
+# datasets
+**/datasets/20_newsgroups/*
+**/datasets/20_newsgroups
