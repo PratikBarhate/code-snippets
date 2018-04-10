@@ -59,6 +59,7 @@ out/
 .idea/*
 *.iml
 *.iws
+**/dependency-reduced-pom.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
