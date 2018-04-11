@@ -1,22 +1,22 @@
 package spark
 
-/*
- * Dataset used - [https://archive.ics.uci.edu/ml/datasets/adult]
- * Dataset is named `adult_train` and `adult_test` in folder "src/main/resources/dataset"
- */
 
 import org.apache.log4j.{Level, Logger}
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.feature.{OneHotEncoder, StringIndexer, VectorAssembler}
+import org.apache.spark.ml.{Pipeline, PipelineStage}
+import org.apache.spark.sql.functions.{col, length, trim, when}
+import org.apache.spark.sql.{Column, Encoders, SparkSession}
 
 import scala.collection.mutable.ListBuffer
-import org.apache.spark.sql.{Column, Encoders, SparkSession}
-import org.apache.spark.ml.{Pipeline, PipelineStage}
-import org.apache.spark.ml.feature.OneHotEncoder
-import org.apache.spark.ml.classification.LogisticRegression
-import org.apache.spark.ml.feature.StringIndexer
-import org.apache.spark.ml.feature.VectorAssembler
-import org.apache.spark.sql.functions.{col, length, trim, when}
 
 object LogisticReg {
+
+  /**
+    * Dataset used - [https://archive.ics.uci.edu/ml/datasets/adult]
+    * Dataset is named `adult_train` and `adult_test` in folder "src/main/resources/dataset"
+    *
+    */
 
   // Removes spark logs that bloat the console.
   Logger.getLogger("akka").setLevel(Level.OFF)
@@ -42,7 +42,7 @@ object LogisticReg {
   def main(args: Array[String]): Unit = {
 
 
-    val spark = SparkSession.builder().master("local").appName("Databricks_Adult").getOrCreate()
+    val spark = SparkSession.builder().master("local[5]").appName("Databricks_Adult").getOrCreate()
 
     def emptyToNull(c: Column) = when(length(trim(c)) > 0, c)
 
@@ -53,7 +53,7 @@ object LogisticReg {
 
     val trainDataDf = spark.read.format("csv").option("header", "false").
       option("delimiter", ",").schema(dataSchema).
-      load("/Users/tkmahxk/Pratik/Study/Projects/ml-snippets/scala/src/main/resources/dataset/adult_train.csv"). // file path as needed
+      load("Update train file path - resources/dataset/adult_train"). // file path as needed
       withColumn("workclass", emptyToNull(col("workclass"))).
       withColumn("education", emptyToNull(col("education"))).
       withColumn("marital_status", emptyToNull(col("marital_status"))).
@@ -67,7 +67,7 @@ object LogisticReg {
     // change the load file path as per the system in use
     val testDataDf = spark.read.format("csv").option("header", "false").
       option("delimiter", ",").schema(dataSchema).
-      load("/Users/tkmahxk/Pratik/Study/Projects/ml-snippets/scala/src/main/resources/dataset/adult_test.csv"). //file path as needed
+      load("Update test file path - resources/dataset/adult_test"). //file path as needed
       withColumn("workclass", emptyToNull(col("workclass"))).
       withColumn("education", emptyToNull(col("education"))).
       withColumn("marital_status", emptyToNull(col("marital_status"))).
@@ -87,8 +87,8 @@ object LogisticReg {
 
     categoricalColumns.foreach({
       x =>
-        val stringIndexer = new StringIndexer().setInputCol(x).setOutputCol(x+"Index")
-        val encoder = new OneHotEncoder().setInputCol(x+"Index").setOutputCol(x+"ClassVec")
+        val stringIndexer = new StringIndexer().setInputCol(x).setOutputCol(x + "Index")
+        val encoder = new OneHotEncoder().setInputCol(x + "Index").setOutputCol(x + "ClassVec")
         stages += (stringIndexer, encoder)
     })
 
@@ -98,7 +98,7 @@ object LogisticReg {
     val numericColumns: List[String] = List("age", "fnlwgt", "education_num",
       "capital_gain", "capital_loss", "hours_per_week")
 
-    val assemblerInputs = categoricalColumns.map(x => x+"ClassVec") ++ numericColumns
+    val assemblerInputs = categoricalColumns.map(x => x + "ClassVec") ++ numericColumns
 
     val assembler = new VectorAssembler().setInputCols(assemblerInputs.toArray).setOutputCol("features")
     stages += assembler
