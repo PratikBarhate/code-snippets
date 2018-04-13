@@ -1,12 +1,12 @@
 package spark
 
-
+import spark.CommonOps.emptyToNull
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.feature.{OneHotEncoder, StringIndexer, VectorAssembler}
 import org.apache.spark.ml.{Pipeline, PipelineStage}
-import org.apache.spark.sql.functions.{col, length, trim, when}
-import org.apache.spark.sql.{Column, Encoders, SparkSession}
+import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.{Encoders, SparkSession}
 
 import scala.collection.mutable.ListBuffer
 
@@ -15,7 +15,9 @@ object LogisticReg {
   /**
     * Dataset used - [https://archive.ics.uci.edu/ml/datasets/adult]
     * Dataset is named `adult_train` and `adult_test` in folder "src/main/resources/dataset"
+    * Spark default logs are blocked so that the logs printed on the console are less
     *
+    * Logistic Regression to classify the income to be above or below 50K
     */
 
   // Removes spark logs that bloat the console.
@@ -43,8 +45,6 @@ object LogisticReg {
 
 
     val spark = SparkSession.builder().master("local[5]").appName("Databricks_Adult").getOrCreate()
-
-    def emptyToNull(c: Column) = when(length(trim(c)) > 0, c)
 
     // define data schema to be loaded
     val dataSchema = Encoders.product[Schema].schema
