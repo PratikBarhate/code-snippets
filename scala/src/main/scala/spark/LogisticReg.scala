@@ -6,6 +6,7 @@ import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.feature.{OneHotEncoder, StringIndexer, VectorAssembler}
 import org.apache.spark.ml.{Pipeline, PipelineStage}
 import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.{Encoders, SparkSession}
 
 import scala.collection.mutable.ListBuffer
@@ -43,11 +44,10 @@ object LogisticReg {
 
   def main(args: Array[String]): Unit = {
 
-
     val spark = SparkSession.builder().master("local[5]").appName("Databricks_Adult").getOrCreate()
 
     // define data schema to be loaded
-    val dataSchema = Encoders.product[Schema].schema
+    val dataSchema: StructType = Encoders.product[Schema].schema
     // load the data
     // change the load file path as per the system in use
 

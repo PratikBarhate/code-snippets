@@ -24,7 +24,7 @@ object LDADocClustering {
   Logger.getLogger("org").setLevel(Level.OFF)
   Logger.getLogger("breeze").setLevel(Level.OFF)
 
-  // Change this according to the ath where data is stored.
+  // Change this according to where data is stored.
   private val basePath = "/Users/tkmah7q/Pratik/Study/Projects/ml-snippets/scala/src/main/resources/datasets/Health-Tweets"
   private val keyColName = "file"
   private val rawDataColName = "data"
