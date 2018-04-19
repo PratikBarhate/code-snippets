@@ -14,6 +14,7 @@
         <scala.lang.version>2.11.8</scala.lang.version>
         <maven.shaded.plugin.version>3.0.0</maven.shaded.plugin.version>
         <scala.maven.plugin.version>3.2.0</scala.maven.plugin.version>
+        <spark.nlp.johnsnowlabs.version>1.5.1</spark.nlp.johnsnowlabs.version>
         <scala.binary.version>2.11</scala.binary.version>
     </properties>
 
@@ -36,7 +37,11 @@
             <version>${spark.version}</version>
             <scope>provided</scope>
         </dependency>
-
+<!--        <dependency>
+            <groupId>com.johnsnowlabs.nlp</groupId>
+            <artifactId>spark-nlp_${scala.binary.version}</artifactId>
+            <version>${spark.nlp.johnsnowlabs.version}</version>
+        </dependency>-->
     </dependencies>
 
     <build>

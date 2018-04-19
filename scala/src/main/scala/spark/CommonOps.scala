@@ -8,7 +8,8 @@ import scala.util.matching.Regex
 object CommonOps {
 
   val extraWhiteSpaceRegex: Regex = "\\s+".r
-  val notAlphaNumericRegex: Regex = "[^0-9a-zA-Z]".r
+  val nonAlphaNumericRegex: Regex = "[^0-9a-zA-Z]".r
+  val webLinksRegex: Regex = "[http://.]".r
   val EmptyString: String = ""
   val SingleWhiteSpace: String = " "
   val EndLineChar: Char = '\n'
