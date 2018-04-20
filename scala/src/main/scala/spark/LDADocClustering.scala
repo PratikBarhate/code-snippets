@@ -102,7 +102,6 @@ object LDADocClustering {
     val sparkSession = SparkSession.builder()
       .master("local[6]")
       .appName("lda_clustering")
-      .config("spark.driver.bindAddress", "127.0.0.1")
       .getOrCreate()
 
     import sparkSession.implicits._
