@@ -23,25 +23,22 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
         </dependency>
-<!--        <dependency>
-            <groupId>com.johnsnowlabs.nlp</groupId>
-            <artifactId>spark-nlp_${scala.binary.version}</artifactId>
-            <version>${spark.nlp.johnsnowlabs.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.lang.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -22,7 +22,7 @@ import spark.CommonOps._
   * 3. N-Gram sequence of tokens
   * 4. CountVectorizer
   * 5. regex operations to extract from raw text data, sequence of regex operations.
-  * 6. Lemmatizer from "johnsnowlabs" NLP library for Apache Spark
+  * 6. Lemmatizer from "Johnsnowlabs" or "StanfordCoreNLP" NLP library.
   *
   * LDA Models Params:
   * 1. Topic concentration / Beta
@@ -58,8 +58,8 @@ object LDADocClustering {
   Logger.getLogger("org").setLevel(Level.OFF)
   Logger.getLogger("breeze").setLevel(Level.OFF)
 
-  // Change this according to where data is stored.
-  private val baseDataPath = "/Users/tkmah7q/Pratik/Study/Projects/ml-snippets/scala/src/main/resources/datasets/Health-Tweets"
+  // Change the path according to where data is stored or pass the path as the argument.
+  private val baseDataPath = "./src/main/resources/datasets/Health-Tweets"
   private val keyColName = "file"
   private val rawDataColName = "data"
   private val dataColName = "tweets"
@@ -68,6 +68,9 @@ object LDADocClustering {
   /**
     * Custom UDF for parsing raw text file and
     * extract required data.
+    * i) Removed all the web hyperlinks
+    * ii) Removed all the non-alphanumeric characters
+    * iii) Removed all the extra white spaces
     *
     * @return [String] Tweets all combined to form a single document
     */
@@ -75,7 +78,7 @@ object LDADocClustering {
     udf((rawData: String) => {
       val tweetsCombined = rawData.split(EndLineChar).map(x => x.split('|')(2)).mkString(SingleWhiteSpace)
       webLinksRegex.replaceAllIn(extraWhiteSpaceRegex.replaceAllIn(
-        nonAlphaNumericRegex.replaceAllIn(tweetsCombined, SingleWhiteSpace), SingleWhiteSpace), EmptyString)
+        nonAlphaNumericRegex.replaceAllIn(tweetsCombined, EmptyString), EmptyString), EmptyString)
     })
 
   /**
@@ -96,7 +99,12 @@ object LDADocClustering {
       */
     val dataPath = if (args.length == 1) args(0) else baseDataPath
 
-    val sparkSession = SparkSession.builder().master("local[6]").appName("lda_clustering").getOrCreate()
+    val sparkSession = SparkSession.builder()
+      .master("local[6]")
+      .appName("lda_clustering")
+      .config("spark.driver.bindAddress", "127.0.0.1")
+      .getOrCreate()
+
     import sparkSession.implicits._
 
     /**
@@ -110,7 +118,7 @@ object LDADocClustering {
     val stopWordsRemover = new StopWordsRemover().setInputCol("tokenize").setOutputCol("removed_stop_words")
     val nGramStage = new NGram().setN(3).setInputCol("removed_stop_words").setOutputCol("n_gram_output")
     val countVectorizer = new CountVectorizer().setInputCol("n_gram_output").setOutputCol(featureVecColName)
-      .setMinDF(1)
+      .setMinDF(2)
 
     /**
       * We need to load the data.
@@ -130,10 +138,11 @@ object LDADocClustering {
       * 2. Value of `k` can be optimized by calculating "Kullback Leibler Divergence Score".
       */
     val cleanedDataDF = stopWordsRemover.transform(tokenizer.transform(docsWithParsedDataDF))
-    nGramStage.transform(cleanedDataDF).show
-    nGramStage.transform(cleanedDataDF).printSchema
-    val countVectorizerModel = countVectorizer.fit(nGramStage.transform(cleanedDataDF))
-    val featureDF = countVectorizerModel.transform(cleanedDataDF)
+    val nGramWordSeqDF = nGramStage.transform(cleanedDataDF)
+    val countVectorizerModel = countVectorizer.fit(nGramWordSeqDF)
+    // Final feature DataFrame we get after all the transformation
+    val featureDF = countVectorizerModel.transform(nGramWordSeqDF)
+    println(s"Data preparation transformations defined.")
     // Initialize the LDA clustering model class
     val lda = new LDA().setK(5).setMaxIter(100).setFeaturesCol(featureVecColName)
     val lDAModel = lda.fit(featureDF)
@@ -155,6 +164,5 @@ object LDADocClustering {
     val transformed = lDAModel.transform(featureDF)
     transformed.printSchema()
     transformed.select("file", "topicDistribution").show(truncate = false)
-
   }
 }
