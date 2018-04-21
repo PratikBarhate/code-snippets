@@ -96,3 +96,8 @@ target/
 # datasets
 **/datasets/20_newsgroups/*
 **/datasets/20_newsgroups
+
+# Apache Spark meta directories
+**/spark-warehouse/*
+spark-warehouse/
+**/spark-warehouse

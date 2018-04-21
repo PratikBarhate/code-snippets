@@ -21,7 +21,7 @@ import spark.CommonOps._
   * 2. StopWordsRemover
   * 3. N-Gram sequence of tokens
   * 4. CountVectorizer
-  * 5. regex operations to extract from raw text data, sequence of regex operations.
+  * 5. Regex operations to extract from raw text data, sequence of regex operations.
   * 6. Lemmatizer from "Johnsnowlabs" or "StanfordCoreNLP" NLP library.
   *
   * LDA Models Params:
@@ -54,9 +54,9 @@ import spark.CommonOps._
 object LDADocClustering {
 
   // Removes spark logs that bloat the console.
-  Logger.getLogger("akka").setLevel(Level.OFF)
-  Logger.getLogger("org").setLevel(Level.OFF)
-  Logger.getLogger("breeze").setLevel(Level.OFF)
+  Logger.getLogger("akka").setLevel(Level.ERROR)
+  Logger.getLogger("org.apache").setLevel(Level.ERROR)
+  Logger.getLogger("breeze").setLevel(Level.ERROR)
 
   // Change the path according to where data is stored or pass the path as the argument.
   private val baseDataPath = "./src/main/resources/datasets/Health-Tweets"
@@ -77,8 +77,8 @@ object LDADocClustering {
   private def parseRawFile: UserDefinedFunction =
     udf((rawData: String) => {
       val tweetsCombined = rawData.split(EndLineChar).map(x => x.split('|')(2)).mkString(SingleWhiteSpace)
-      webLinksRegex.replaceAllIn(extraWhiteSpaceRegex.replaceAllIn(
-        nonAlphaNumericRegex.replaceAllIn(tweetsCombined, EmptyString), EmptyString), EmptyString)
+      extraWhiteSpaceRegex.replaceAllIn(nonAlphaNumericWithSpaceRegex.replaceAllIn(
+        webLinksRegex.replaceAllIn(tweetsCombined, EmptyString), EmptyString), SingleWhiteSpace)
     })
 
   /**
@@ -102,6 +102,7 @@ object LDADocClustering {
     val sparkSession = SparkSession.builder()
       .master("local[6]")
       .appName("lda_clustering")
+      .config("spark.driver.bindAddress", "127.0.0.1")
       .getOrCreate()
 
     import sparkSession.implicits._
@@ -143,9 +144,12 @@ object LDADocClustering {
     val featureDF = countVectorizerModel.transform(nGramWordSeqDF)
     println(s"Data preparation transformations defined.")
     // Initialize the LDA clustering model class
-    val lda = new LDA().setK(5).setMaxIter(100).setFeaturesCol(featureVecColName)
+    val lda = new LDA().setK(16).setMaxIter(100).setFeaturesCol(featureVecColName)
     val lDAModel = lda.fit(featureDF)
 
+    /**
+      * Lower the perplexity more the depth (details) of information in the topics.
+      */
     val ll = lDAModel.logLikelihood(featureDF)
     val lp = lDAModel.logPerplexity(featureDF)
     println(s"The lower bound on the log likelihood of the entire corpus: $ll")
@@ -157,6 +161,7 @@ object LDADocClustering {
     val countVecVocabulary: List[String] = countVectorizerModel.vocabulary.toList
     val topicWithWords: DataFrame = topics
       .withColumn("key_words", getWordsFromCountVecMode(col("termIndices"), typedLit(countVecVocabulary)))
+      .drop("termWeights")
     topicWithWords.show(false)
 
     // Shows the result.
