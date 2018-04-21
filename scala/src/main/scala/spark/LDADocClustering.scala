@@ -111,8 +111,8 @@ object LDADocClustering {
       * 1. Set the transformer required for the given data with correct column names
       * 2. RegexTokenizer can be used for complex tokenize logic, where separators can be a regex expression.
       * 3. Remove stop words from the
-      * 3. We set the minDF = 1, that means a word will be included in the vocabulary
-      * when it appears in minimum of 1 document.
+      * 3. We set the minDF = 2, that means a word will be included in the vocabulary
+      * when it appears in minimum of 2 document. --> "setMinDF(2)"
       */
     val tokenizer = new Tokenizer().setInputCol(dataColName).setOutputCol("tokenize")
     val stopWordsRemover = new StopWordsRemover().setInputCol("tokenize").setOutputCol("removed_stop_words")
@@ -134,7 +134,7 @@ object LDADocClustering {
       * 2. Transform data as expected by the LDA clustering algorithm.
       *
       * ->| Model parameters
-      * 1. Cluster the documents into `k = 5` topics using LDA.
+      * 1. Cluster the documents into `k = 16` topics using LDA.
       * 2. Value of `k` can be optimized by calculating "Kullback Leibler Divergence Score".
       */
     val cleanedDataDF = stopWordsRemover.transform(tokenizer.transform(docsWithParsedDataDF))
