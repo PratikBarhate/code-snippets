@@ -1,13 +1,11 @@
 ## Principal-Component-Analysis (PCA)
-
 1. PCA helps in identifying and finding patterns to reduce the dimensions of the dataset with minimal loss of information.
 2. Sites to understand PCA:
-    1. With Iris [data](https://plot.ly/ipython-notebooks/principal-component-analysis/)
-    2. With Random [data](http://sebastianraschka.com/Articles/2014_pca_step_by_step.html#what-is-a-good-subspace)
+    1. [With Iris data](https://plot.ly/ipython-notebooks/principal-component-analysis/)
+    2. [With Random data](http://sebastianraschka.com/Articles/2014_pca_step_by_step.html#what-is-a-good-subspace)
 3. Ways to compute eigen values, eigen vectors and its use in PCA - [Eigen Value Decomposition](https://www.cc.gatech.edu/~dellaert/ftp/svd-note.pdf)
 
 ### Key Points
-
 1. If the data matrix is centered to have zero mean then EVD and the SVD are exactly the same.
 Using eigen value decomposition is a better way, if you cannot verify the mean is tending to zero
 2. Standardizing the features is good practice, though it won't affect the eigen values, eigen vectors will be different

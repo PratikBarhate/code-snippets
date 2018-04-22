@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 # load data
 # change the file path as required
 iris_df = pandas.read_csv(
-    filepath_or_buffer="/Users/tkmah7q/Pratik/Study/Projects/ml-snippets/python/dataset/IrisData.csv",
+    filepath_or_buffer="../dataset/IrisData.csv",
     header=None, sep=",")
 iris_df.columns = ["sepal_len", "sepal_wid", "petal_len", "petal_wid", "label"]
 

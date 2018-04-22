@@ -22,7 +22,7 @@ import spark.CommonOps._
   * 3. N-Gram sequence of tokens
   * 4. CountVectorizer
   * 5. Regex operations to extract from raw text data, sequence of regex operations.
-  * 6. Lemmatizer from "Johnsnowlabs" or "StanfordCoreNLP" NLP library.
+  * 6. Lemmatization from "JohnSnowLabs" or "StanfordCoreNLP" NLP library.
   *
   * LDA Models Params:
   * 1. Topic concentration / Beta
@@ -150,9 +150,7 @@ object LDADocClustering {
     /**
       * Lower the perplexity more the depth (details) of information in the topics.
       */
-    val ll = lDAModel.logLikelihood(featureDF)
     val lp = lDAModel.logPerplexity(featureDF)
-    println(s"The lower bound on the log likelihood of the entire corpus: $ll")
     println(s"The upper bound on perplexity: $lp")
 
     // Describe topics.
