@@ -15,12 +15,18 @@ _Some basic theory links and naive notes are in the directory `${project_root_di
 3. You need to install Apache Spark - v2.3.0 locally if you want to execute using `spark-submit` command.
 
 ### POCs in python
-1. PCA (Principal Component Analysis)
-2. LDA (Linear Discriminant Analysis)
+
+| Sr.No. | Algorithm                             | Links                                                   |
+|--------|---------------------------------------|---------------------------------------------------------|
+| 1      | PCA (Principal Component Analysis)    | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py)  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/PCA.md) |
+| 2      | LDA (Linear Discriminant Analysis)    | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py)  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/LDA_Dimension_Reduction.md) |
 
 ### POCs in scala (spark)
-1. Logistic Regression (On UCI Adult Dataset)
-2. Latent Dirichlet Allocation (On UCI Health Tweet Dataset)
+
+| Sr.No. | Algorithm                             | Links                                                   |
+|--------|---------------------------------------|---------------------------------------------------------|
+| 1      | Logistic Regression                   | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LogisticReg.scala) |
+| 2      | Latent Dirichlet Allocation           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LDADocClustering.scala)  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/LDA_Custering.md) |
 
 ### Executing the POCs
 #### Scala

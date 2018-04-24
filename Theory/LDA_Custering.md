@@ -28,6 +28,7 @@ when we want to extract topics from large corpus of text data._
 4. Optimizer - "em" or "online" only these two are supported.
 
 ***III) Intuition on the values of Alpha and Beta:***
+
 For the symmetric distribution, a high alpha-value means that each document is likely to
 contain a mixture of most of the topics, and not any single topic specifically.
 A low alpha value puts less such constraints on documents and means that it is more likely
