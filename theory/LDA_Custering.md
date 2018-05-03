@@ -12,7 +12,7 @@ these huge number of documents (may be huge in size too) to clustering or search
 the keywords (topics). Thus, helps in reducing the number of resources required for
 searching. The topic learned by the model can be used to automatically tag new incoming text data.
 
-### Idea behind the algorithm
+### I) Idea behind the algorithm
 
 1. Technically the model assumes that the topics are specified before any data
 has been generated. LDA represents documents as mixtures of topics that spit out
@@ -36,25 +36,25 @@ topics that are likely to have generated the collection.
     1. Topic concentration / Beta
     2. Document concentration / Alpha
 
-_For the symmetric distribution, a high alpha-value means that each document is
+**For the symmetric distribution, a high alpha-value means that each document is
 likely to contain a mixture of most of the topics, and not any single topic
 specifically. A low alpha value puts less such constraints on documents and means
 that it is more likely that a document may contain mixture of just a few, or even
 only one, of the topics. Likewise, a high beta-value means that each topic is
 likely to contain a mixture of most of the words, and not any word specifically,
 while a low value means that a topic may contain a mixture of just a few of the
-words.
+words.**
 
-If, on the other hand, the distribution is asymmetric, a high alpha-value means
+**If, on the other hand, the distribution is asymmetric, a high alpha-value means
 that a specific topic distribution (depending on the base measure) is more likely
 for each document. Similarly, high beta-values means each topic is more likely to
-contain a specific word mix defined by the base measure.
+contain a specific word mix defined by the base measure.**
 
-In practice, a high alpha-value will lead to documents being more similar in
+**In practice, a high alpha-value will lead to documents being more similar in
 terms of what topics they contain. A high beta-value will similarly lead to
-topics being more similar in terms of what words they contain._
+topics being more similar in terms of what words they contain.**
 
-### Example
+### II) Example
 
 _Sample documents are:_
 
@@ -76,7 +76,7 @@ Now some new document can be tagged with the above given topics using the observ
 
 Here, we can say that sentence 1 is 100% Topic A and sentence 2 is 40% Topic B with 60% Topic A.
 
-### Overview of the algorithm
+### III) Overview of the algorithm
 
 Suppose we have a collection of documents and we want to learn K topics out of them.
 
@@ -90,9 +90,9 @@ Suppose we have a collection of documents and we want to learn K topics out of t
 
 _After repeating these steps for large enough number of times, we will get pretty good topic assignments such that, they generate words describing the documents._
 
-### Key points for data processing
+### IV) Key points for data processing
 
-***I) General Operators Required:***
+***1) General Operators Required:***
 1. Tokenizer or RegexTokenizer (for more powerful tokenize operation)
 2. StopWordsRemover
 3. N-Gram sequence of tokens
@@ -100,17 +100,17 @@ _After repeating these steps for large enough number of times, we will get prett
 5. Regex operations to extract from raw text data, sequence of regex operations.
 6. Lemmatization from "JohnSnowLabs" or "StanfordCoreNLP" NLP library (If using python then [spaCy](https://github.com/explosion/spaCy) can also be used).
 
-***II) LDA Models Params (Supported in Apache Spark v2.3.0):***
+***2) LDA Models Params (Supported in Apache Spark v2.3.0):***
 1. Topic concentration / Beta
 2. Document concentration / Alpha
 3. K = number of topics we are expecting
 4. Optimizer - "em" or "online" only these two are supported.
 
-### Sample outputs
+### V) Sample outputs
 
 Dataset used [UCI Health-Tweet](https://archive.ics.uci.edu/ml/datasets/Health+News+in+Twitter)
 
-_I)_
+_1)_
 **N-Gram = 3, k = 10, Min document occurrence of key words = 1**
 
 | topic | termIndices    | key_words                                                                            |
@@ -126,7 +126,7 @@ _I)_
 | 8     | 3, 274, 400]   | [todays getfit tip, rt allergyreliefny cnnhealth, chat 423 130]                      |
 | 9     | [101, 120, 99] | [reports todays cartoon, reports todays headlines, health insurance exchanges]       |
 
-_II)_
+_2)_
 **N-Gram = 3, k = 10, Min document occurrence of key words = 2**
 
 | topic | termIndices      | key_words                                                          |
@@ -142,7 +142,7 @@ _II)_
 | 8     | [28, 17, 138]    | [sierra leone ebola, ebola death toll, suspected ebola case]       |
 | 9     | [17, 28, 43]     | [ebola death toll, sierra leone ebola, west africa ebola]          |
 
-_III)_
+_3)_
 **N-Gram = 3, k = 16, Min document occurrence of key words = 2**
 
 | topic | termIndices        | key_words                                                              |
