@@ -1,7 +1,7 @@
 ### code-snippets
 Short machine learning code snippets - python, spark(scala)
 
-_Some basic theory links and naive notes are in the directory `${project_root_dir}/Theory`_
+_Some basic theory links and naive notes are in the directory_ [theory](https://github.com/Pratik-Barhate/code-snippets/tree/master/theory)
 
 #### python dependencies
 1. python - v3.6.3
@@ -18,15 +18,15 @@ _Some basic theory links and naive notes are in the directory `${project_root_di
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/PCA.md) |
-| 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/LDA_Dimension_Reduction.md) |
+| 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/PCA.md) |
+| 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Dimension_Reduction.md) |
 
 ### POCs in scala (spark)
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | Logistic Regression                   | Classification           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LogisticReg.scala) |
-| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/Theory/LDA_Custering.md) |
+| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
 
 ### Executing the POCs
 #### Scala
