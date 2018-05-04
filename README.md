@@ -14,21 +14,21 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 2. Maven - v3.5.2 (All other dependencies are already added in the pom, hence maven handles rest.)
 3. You need to install Apache Spark - v2.3.0 locally if you want to execute using `spark-submit` command.
 
-### POCs in python
+### Sample codes in python
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/PCA.md) |
 | 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Dimension_Reduction.md) |
 
-### POCs in scala (spark)
+### Sample codes in scala (spark)
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | Logistic Regression                   | Classification           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LogisticReg.scala) |
 | 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
 
-### Executing the POCs
+### Executing the sample codes
 #### Scala
 _Scala codes can be executed through IDEs by running the main method of the specific class._
 
