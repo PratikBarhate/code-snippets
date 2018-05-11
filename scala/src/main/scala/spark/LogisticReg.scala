@@ -1,13 +1,15 @@
 package spark
 
-import spark.CommonOps.emptyToNull
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.ml.feature.{OneHotEncoder, StringIndexer, VectorAssembler}
+import org.apache.spark.ml.tuning.{CrossValidator, CrossValidatorModel, ParamGridBuilder}
 import org.apache.spark.ml.{Pipeline, PipelineStage}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.{Encoders, SparkSession}
+import spark.CommonOps.emptyToNull
 
 import scala.collection.mutable.ListBuffer
 
@@ -53,7 +55,7 @@ object LogisticReg {
 
     val trainDataDf = spark.read.format("csv").option("header", "false").
       option("delimiter", ",").schema(dataSchema).
-      load("Update train file path - resources/dataset/adult_train"). // file path as needed
+      load("./src/main/resources/datasets/adult_train.csv"). // file path as needed
       withColumn("workclass", emptyToNull(col("workclass"))).
       withColumn("education", emptyToNull(col("education"))).
       withColumn("marital_status", emptyToNull(col("marital_status"))).
@@ -67,7 +69,7 @@ object LogisticReg {
     // change the load file path as per the system in use
     val testDataDf = spark.read.format("csv").option("header", "false").
       option("delimiter", ",").schema(dataSchema).
-      load("Update test file path - resources/dataset/adult_test"). //file path as needed
+      load("./src/main/resources/datasets/adult_test.csv"). //file path as needed
       withColumn("workclass", emptyToNull(col("workclass"))).
       withColumn("education", emptyToNull(col("education"))).
       withColumn("marital_status", emptyToNull(col("marital_status"))).
@@ -100,7 +102,7 @@ object LogisticReg {
 
     val assemblerInputs = categoricalColumns.map(x => x + "ClassVec") ++ numericColumns
 
-    val assembler = new VectorAssembler().setInputCols(assemblerInputs.toArray).setOutputCol("features")
+    val assembler: VectorAssembler = new VectorAssembler().setInputCols(assemblerInputs.toArray).setOutputCol("features")
     stages += assembler
 
     val pipeline = new Pipeline().setStages(stages.toArray)
@@ -114,15 +116,39 @@ object LogisticReg {
     val allColumnsTestDataDf = pipelineModel.transform(testDataDf)
 
     // select only needed columns
-    val trainingDf = allColumnsTrainDataDf.select("features", "label")
+    val trainingDf = allColumnsTrainDataDf.select("features", "label").cache
+    trainDataDf.count
     val testingDf = allColumnsTestDataDf.select("features", "label")
 
     // training the model
-    val logicReg = new LogisticRegression().setLabelCol("label").setFeaturesCol("features").setMaxIter(100)
-    val logicRegModel = logicReg.fit(trainingDf)
+    val logicReg = new LogisticRegression().setLabelCol("label").setFeaturesCol("features")
 
-    // predictions from the already trained model
-    val logicRegPredictions = logicRegModel.transform(testingDf)
-    logicRegPredictions.show
+    val paramGrid = new ParamGridBuilder()
+      .addGrid(logicReg.regParam, Array(0.1, 0.01, 0.3))
+      .addGrid(logicReg.maxIter, Array(50, 100, 1000))
+      .addGrid(logicReg.elasticNetParam, Array(0.5, 0.8, 0.3))
+      .addGrid(logicReg.tol, Array(1E-3, 1E-6, 1E-12))
+      .build()
+
+    val evaluator = new MulticlassClassificationEvaluator()
+      .setMetricName("f1")
+
+    val cv: CrossValidator = new CrossValidator()
+      .setEstimator(logicReg)
+      .setEvaluator(evaluator)
+      .setEstimatorParamMaps(paramGrid)
+      .setNumFolds(2)
+      .setParallelism(2)
+      .setCollectSubModels(true)
+
+    val cvModel: CrossValidatorModel = cv.fit(trainingDf)
+
+    cvModel.write.save("./src/main/resources/trainedModel")
+
+    val loadedModel: CrossValidatorModel = CrossValidatorModel.load("./src/main/resources/trainedModel")
+
+    val result = loadedModel.transform(testingDf)
+
+    result.show(false)
   }
 }
