@@ -25,8 +25,8 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LogisticReg.scala) |
-| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
+| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/spark/src/main/scala/spark/LogisticReg.scala) |
+| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/spark/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
 
 ### Executing the sample codes
 #### Scala
