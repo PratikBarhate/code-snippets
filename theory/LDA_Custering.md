@@ -163,9 +163,9 @@ _3)_
 
 
 ### Some more theory links
-1. In simple terms - [LDA Layman's guide](http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/)
-2. Basics of MLE - [Maximum Likelihood Estimation](https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1)
-3. UMAS - [slides](http://people.cs.umass.edu/~wallach/talks/priors.pdf)
-4. Detail Maths and logic - [Safari Books - Data Clustering](https://www.safaribooksonline.com/library/view/data-clustering/9781466558229/)
+1. UMAS - [slides](http://people.cs.umass.edu/~wallach/talks/priors.pdf)
+2. In detail [github links](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic) under  `Natural Language Processing`
+ you will find `Topic modeling` section.
+3. In detail book Maths and logic - [Safari Books - Data Clustering](https://www.safaribooksonline.com/library/view/data-clustering/9781466558229/)
 
  _Note: Point 3 source is good for those who have prior knowledge of advanced maths concepts._
