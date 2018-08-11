@@ -1,4 +1,4 @@
-package spark
+package io.github.pratikbarhate.spark.ml
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.classification.LogisticRegression
@@ -9,7 +9,7 @@ import org.apache.spark.ml.{Pipeline, PipelineStage}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.{Encoders, SparkSession}
-import spark.CommonOps.emptyToNull
+import CommonOps.emptyToNull
 
 import scala.collection.mutable.ListBuffer
 

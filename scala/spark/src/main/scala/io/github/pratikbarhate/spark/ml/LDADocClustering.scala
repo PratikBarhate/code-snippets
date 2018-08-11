@@ -1,4 +1,4 @@
-package spark
+package io.github.pratikbarhate.spark.ml
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.clustering.LDA
@@ -6,7 +6,7 @@ import org.apache.spark.ml.feature.{CountVectorizer, NGram, StopWordsRemover, To
 import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import spark.CommonOps._
+import CommonOps._
 
 /**
   * We are trying to cluster the Health-tweets data from UCI dataset list.

@@ -1,4 +1,4 @@
-package spark
+package io.github.pratikbarhate.spark.ml
 
 import org.apache.spark.sql.Column
 import org.apache.spark.sql.functions.{length, trim, when}
