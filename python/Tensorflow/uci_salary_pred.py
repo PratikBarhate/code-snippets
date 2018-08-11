@@ -2,6 +2,7 @@ import tensorflow as tf
 
 
 def read_data(data_type: str):
+
     # define all the constants
     train_data_file = "../dataset/adult_train.csv"
     test_data_file = "../dataset/adult_test.csv"
@@ -15,7 +16,7 @@ def read_data(data_type: str):
                             [0], [0], [0], [""], [""]]
     _NUM_EXAMPLES = {
         "train": 32561,
-        "validation": 16281,
+        "validation": 8257,
     }
 
     # start processing

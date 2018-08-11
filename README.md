@@ -25,8 +25,10 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/spark/src/main/scala/spark/LogisticReg.scala) :: [Theory](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic)(Find Logistic Regression section) |
-| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/scala/spark/src/main/scala/spark/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
+| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LogisticReg.scala) :: [Theory](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic)(Find Logistic Regression section) |
+| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
+| 3      | CollectMap                            | User Defined Aggregate Function for Apache Spark analogous to `collect_list` |
+[Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/CollectMap.scala) |
 
 ### Executing the sample codes
 #### Scala
