@@ -10,17 +10,18 @@ import org.apache.spark.sql.types._
   * This an example of an UDAF (User defined aggregate function) in apache spark
   * which generates a map of [String -> Double] from two columns.
   *
-  * Analogous to collect_list function would create a map from two given columns,
-  * first column being the keys and second column being the values.
+  * Analogous to collect_list function, this UDAF would create a map from two given columns,
+  * first column being the keys and second[NumericType] column being the values.
   */
 class CollectMap extends UserDefinedAggregateFunction {
+
   override def inputSchema: StructType = StructType(Array(
-    StructField("key", StringType),
-    StructField("value", DoubleType)))
+    StructField("key", StringType, nullable = false),
+    StructField("value", DoubleType, nullable = false)))
 
   override def bufferSchema: StructType = StructType(Array(
-    StructField("keys", new ArrayType(elementType = StringType, containsNull = false)),
-    StructField("values", new ArrayType(elementType = DoubleType, containsNull = false))
+    StructField("keys", ArrayType(elementType = StringType, containsNull = false)),
+    StructField("values", ArrayType(elementType = DoubleType, containsNull = false))
   ))
 
   override def dataType: DataType =
