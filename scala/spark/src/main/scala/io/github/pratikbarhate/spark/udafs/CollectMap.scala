@@ -37,8 +37,8 @@ class CollectMap extends UserDefinedAggregateFunction {
   }
 
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
-    buffer(0) = Array(input.getString(0)) ++ buffer.getSeq[String](0)
-    buffer(1) = Array(input.getDouble(1)) ++ buffer.getSeq[Double](1)
+    buffer(0) = Seq(input.getString(0)) ++ buffer.getSeq[String](0)
+    buffer(1) = Seq(input.getDouble(1)) ++ buffer.getSeq[Double](1)
   }
 
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
