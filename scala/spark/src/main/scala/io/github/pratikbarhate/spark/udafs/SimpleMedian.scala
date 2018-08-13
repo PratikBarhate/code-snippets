@@ -81,7 +81,7 @@ class SimpleMedian extends UserDefinedAggregateFunction {
   }
 
   override def evaluate(buffer: Row): Double = {
-    val n = buffer.getInt(1)
+    val n = buffer.getInt(1) - 1
     val values = buffer.getList[Double](0)
     if (n % 2 == 0) {
       values.get(n / 2)
