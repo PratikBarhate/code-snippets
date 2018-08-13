@@ -17,10 +17,11 @@ class CollectMap extends UserDefinedAggregateFunction {
 
   override def inputSchema: StructType = StructType(Array(
     StructField("key", StringType, nullable = false),
-    StructField("value", DoubleType, nullable = false)))
+    StructField("value", DoubleType, nullable = false)
+  ))
 
   override def bufferSchema: StructType = StructType(Array(
-    StructField("keys", ArrayType(elementType = StringType, containsNull = false)),
+    StructField("keys", ArrayType(elementType = StringType, containsNull = false), nullable = false),
     StructField("values", ArrayType(elementType = DoubleType, containsNull = false))
   ))
 
@@ -37,8 +38,8 @@ class CollectMap extends UserDefinedAggregateFunction {
   }
 
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
-    buffer(0) = Seq(input.getString(0)) ++ buffer.getSeq[String](0)
-    buffer(1) = Seq(input.getDouble(1)) ++ buffer.getSeq[Double](1)
+    buffer(0) = buffer.getSeq[String](0) :+ input.getString(0)
+    buffer(1) = buffer.getSeq[Double](1) :+ input.getDouble(1)
   }
 
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
@@ -47,7 +48,7 @@ class CollectMap extends UserDefinedAggregateFunction {
   }
 
   override def evaluate(buffer: Row): Map[String, Double] = {
-    Map(buffer.getSeq[String](0).zip(buffer.getSeq[Double](1)): _ *)
+    Map(buffer.getSeq[String](0) zip buffer.getSeq[Double](1): _ *)
   }
 
 }
