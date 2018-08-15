@@ -38,10 +38,10 @@ class SimpleMedian extends UserDefinedAggregateFunction {
     }
   }
 
-  private def merge(xs1: List[Double], xs2: List[Double]): List[Double] = {
+  private def merge(xs1: Seq[Double], xs2: Seq[Double]): Seq[Double] = {
     (xs1, xs2) match {
-      case (h1 :: t1, h2 :: _) if h1 < h2 => h1 :: merge(t1, xs2)
-      case (h1 :: _, h2 :: t2) if h1 > h2 => h2 :: merge(xs1, t2)
+      case (h1 +: t1, h2 +: _) if h1 < h2 => h1 +: merge(t1, xs2)
+      case (h1 +: _, h2 +: t2) if h1 > h2 => h2 +: merge(xs1, t2)
       case (l1, Nil) => l1
       case (Nil, l2) => l2
     }
@@ -73,8 +73,8 @@ class SimpleMedian extends UserDefinedAggregateFunction {
   }
 
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
-    buffer1(0) = merge(buffer1.getList[Double](0).asScala.toList,
-      buffer2.getList[Double](0).asScala.toList)
+    buffer1(0) = merge(buffer1.getList[Double](0).asScala,
+      buffer2.getList[Double](0).asScala)
     buffer1(1) = buffer1.getInt(1) + buffer2.getInt(1)
   }
 
