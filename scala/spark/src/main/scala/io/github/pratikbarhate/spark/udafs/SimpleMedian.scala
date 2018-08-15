@@ -14,7 +14,6 @@ import scala.collection.JavaConverters._
   * 1. Sorting is in ascending order.
   * 2. UPDATE: The update method is based on insert operation of insertion sort.
   * 3. MERGE: The merge method is based on merge operation of merge sort.
-  * Initial result is kept as parameter which is `Nil`(An empty List)
   *
   * It can used with `agg`function along with `groupBy` function as most probably
   * the number of rows per group may fit within the limit.
@@ -39,12 +38,12 @@ class SimpleMedian extends UserDefinedAggregateFunction {
     }
   }
 
-  private def merge(xs1: List[Double], xs2: List[Double], result: List[Double]): List[Double] = {
+  private def merge(xs1: List[Double], xs2: List[Double]): List[Double] = {
     (xs1, xs2) match {
-      case (h1 :: t1, h2 :: _) if h1 < h2 => h1 :: merge(t1, xs2, result)
-      case (h1 :: _, h2 :: t2) if h1 > h2 => h2 :: merge(xs1, t2, result)
-      case (l1, Nil) => result ++ l1
-      case (Nil, l2) => result ++ l2
+      case (h1 :: t1, h2 :: _) if h1 < h2 => h1 :: merge(t1, xs2)
+      case (h1 :: _, h2 :: t2) if h1 > h2 => h2 :: merge(xs1, t2)
+      case (l1, Nil) => l1
+      case (Nil, l2) => l2
     }
   }
 
@@ -75,8 +74,7 @@ class SimpleMedian extends UserDefinedAggregateFunction {
 
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
     buffer1(0) = merge(buffer1.getList[Double](0).asScala.toList,
-      buffer2.getList[Double](0).asScala.toList,
-      result = Nil)
+      buffer2.getList[Double](0).asScala.toList)
     buffer1(1) = buffer1.getInt(1) + buffer2.getInt(1)
   }
 
