@@ -1,0 +1,35 @@
+<assembly>
+    <id>scala</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>target/</directory>
+            <includes>
+                <include>${project.build.finalName}.jar</include>
+            </includes>
+            <outputDirectory>/lib</outputDirectory>
+            <fileMode>444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.sh</include>
+                <include>*.bat</include>
+            </includes>
+            <fileMode>555</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>etc</outputDirectory>
+            <includes>
+                <include>*.txt</include>
+                <include>*.sql</include>
+                <include>*.conf</include>
+            </includes>
+            <fileMode>666</fileMode>
+        </fileSet>
+    </fileSets>
+</assembly>

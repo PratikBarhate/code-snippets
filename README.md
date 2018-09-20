@@ -21,7 +21,7 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 | 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/PCA.md) |
 | 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Dimension_Reduction.md) |
 
-### Sample codes in scala (spark)
+### Sample codes in scala
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
@@ -29,6 +29,7 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 | 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
 | 3      | CollectMap                            | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/CollectMap.scala) |
 | 4      | Median (simple)                       | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/SimpleMedian.scala) |
+| 5      | Searching                              | akka-actors             | [Maven Project](https://github.com/PratikBarhate/code-snippets/blob/master/scala/textsearch) |
 
 ### Executing the sample codes
 #### Scala
