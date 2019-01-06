@@ -14,7 +14,7 @@
         <maven.shaded.plugin.version>3.0.0</maven.shaded.plugin.version>
         <scala.maven.plugin.version>3.2.0</scala.maven.plugin.version>
         <typsafe.config.version>1.3.1</typsafe.config.version>
-        <typesafe.akka-actor.version>2.5.4</typesafe.akka-actor.version>
+        <typesafe.akka-actor.version>2.5.16</typesafe.akka-actor.version>
     </properties>
 
     <dependencies>
