@@ -1,5 +1,5 @@
 ### code-snippets
-Short machine learning code snippets - python, spark(scala)
+Collection of small programs.
 
 _Some basic theory links and naive notes are in the directory_ [theory](https://github.com/Pratik-Barhate/code-snippets/tree/master/theory)
 
@@ -14,22 +14,28 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 2. Maven - v3.5.2 (All other dependencies are already added in the pom, hence maven handles rest.)
 3. You need to install Apache Spark - v2.3.0 locally if you want to execute using `spark-submit` command.
 
-### Sample codes in python
+### Codes in `Python`
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/PCA.md) |
 | 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Dimension_Reduction.md) |
 
-### Sample codes in scala
+### Codes in `Scala`
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | Logistic Regression                   | Classification           | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LogisticReg.scala) :: [Theory](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic)(Find Logistic Regression section) |
 | 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
 | 3      | CollectMap                            | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/CollectMap.scala) |
-| 4      | Median (simple)                       | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/SimpleMedian.scala) |
+| 4      | Median                               | UDAF for Apache Spark    | [SimpleMedian](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/SimpleMedian.scala) |
 | 5      | Searching                              | akka-actors             | [Maven Project](https://github.com/PratikBarhate/code-snippets/blob/master/scala/textsearch) |
+
+### Basic Programming
+| Sr.No. | Algorithm                             | Type                     | Code links                                         |
+|--------|---------------------------------------|--------------------------|----------------------------------------------------|
+| 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/scala/scalaprograms/sorting/InsertionSort.scala) [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/java/javaprograms/sorting/InsertionSort.java) |
+
 
 ### Executing the sample codes
 #### Scala
