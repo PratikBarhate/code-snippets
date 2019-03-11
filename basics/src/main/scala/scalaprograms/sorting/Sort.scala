@@ -7,4 +7,5 @@ package scalaprograms.sorting
   * The algorithms are implemented with Functional Programming paradigm in mind.
   */
 trait Sort {
+  def sort[T](in: Seq[T])(implicit ord: Ordering[T]): Seq[T]
 }

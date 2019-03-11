@@ -11,11 +11,11 @@ public class InsertionSort implements Sort {
 
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1, 23, 4, 100, 6, 8, 94, 2));
-        sort(arr, Comparator.comparingInt(o -> o));
+        new InsertionSort().sort(arr, Comparator.comparingInt(o -> o));
         arr.forEach(System.out::println);
     }
 
-    public static <T> void sort(ArrayList<T> in, Comparator<T> comp) {
+    public <T> void sort(ArrayList<T> in, Comparator<T> comp) {
         Integer length = in.size();
         T key;
         int j;

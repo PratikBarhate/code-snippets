@@ -34,8 +34,7 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 ### Basic Programming
 | Sr.No. | Algorithm                             | Type                     | Code links                                         |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/scala/scalaprograms/sorting/InsertionSort.scala) [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/java/javaprograms/sorting/InsertionSort.java) |
-
+| 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/scala/scalaprograms/sorting/InsertionSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/java/javaprograms/sorting/InsertionSort.java) |
 
 ### Executing the sample codes
 #### Scala

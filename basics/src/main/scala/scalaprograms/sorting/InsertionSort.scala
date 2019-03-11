@@ -3,7 +3,7 @@ package scalaprograms.sorting
 /**
   * This sorting technique is useful when we can make sure that the elements are nearly sorted.
   */
-object InsertionSort {
+object InsertionSort extends Sort {
 
   def main(args: Array[String]): Unit = {
     val unsorted = Seq(1, 23, 4, 100, 6, 8, 94, 2)
