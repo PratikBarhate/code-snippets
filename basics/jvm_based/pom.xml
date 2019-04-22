@@ -12,7 +12,23 @@
         <scala.lang.version>2.12.4</scala.lang.version>
         <scala.binary.version>2.12</scala.binary.version>
         <scala.maven.plugin.version>3.2.0</scala.maven.plugin.version>
+        <akka.actor.version>2.5.21</akka.actor.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_${scala.binary.version}</artifactId>
+            <version>${akka.actor.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.binary.version}</artifactId>
+            <version>3.0.7</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
