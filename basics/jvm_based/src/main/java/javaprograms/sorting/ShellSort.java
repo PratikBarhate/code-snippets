@@ -21,7 +21,10 @@ public class ShellSort implements Sort {
 
     public <T> void sort(ArrayList<T> in, Comparator<T> comparator) {
         int length = in.size();
+<<<<<<< HEAD
         // NOTE: value of the first divisor needs to be adjusted efficiently.
+=======
+>>>>>>> 6d038ec815f3f8a3c9ad82fabd4c72c3d1880cf4
         int gap = (int) Math.ceil((double) length / 2.0);
         T key;
         int j;
