@@ -15,14 +15,14 @@ public class InsertionSort implements Sort {
         arr.forEach(System.out::println);
     }
 
-    public <T> void sort(ArrayList<T> in, Comparator<T> comp) {
+    public <T> void sort(ArrayList<T> in, Comparator<T> comparator) {
         Integer length = in.size();
         T key;
         int j;
         for (int i = 1; i < length; i++) {
             key = in.get(i);
             for (j = i - 1; j >= 0; j--) {
-                if (comp.compare(in.get(j), key) >= 0) {
+                if (comparator.compare(in.get(j), key) >= 0) {
                     in.set(j + 1, in.get(j));
                 } else {
                     break;

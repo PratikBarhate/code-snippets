@@ -14,14 +14,14 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 2. Maven - v3.5.2 (All other dependencies are already added in the pom, hence maven handles rest.)
 3. You need to install Apache Spark - v2.3.0 locally if you want to execute using `spark-submit` command.
 
-#### Codes in `Python`
+#### Codes in Python
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | PCA (Principal Component Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Principal_Component_Analysis/pca.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/PCA.md) |
 | 2      | LDA (Linear Discriminant Analysis)    | Dimensionality Reduction | [Code](https://github.com/Pratik-Barhate/code-snippets/blob/master/python/Linear_Discriminant_Analysis/lda.py) ::  [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Dimension_Reduction.md) |
 
-#### Codes in `Scala`
+#### Codes in Scala
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
@@ -35,7 +35,8 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 
 | Sr.No. | Algorithm                             | Type                     | Code links                                         |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/scala/scalaprograms/sorting/InsertionSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/src/main/java/javaprograms/sorting/InsertionSort.java) |
+| 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/scala/scalaprograms/sorting/InsertionSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/InsertionSort.java) |
+| 2      | Shell Sort                            | Sorting                  | [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/ShellSort.java) |
 
 ### Executing the sample codes
 #### Scala

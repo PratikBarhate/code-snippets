@@ -19,15 +19,7 @@ object InsertionSort extends Sort {
     }
   }
 
-  /**
-    * Insertion sort.
-    *
-    * @param in  The unsorted [[Seq]] of objects.
-    * @param ord The [[Ordering]] type required, default is ASC.
-    * @tparam T The type of the objects in the input sequence.
-    * @return sorted [[Seq]]
-    */
-  def sort[T](in: Seq[T])(implicit ord: Ordering[T]): Seq[T] = {
+  override def sort[T](in: Seq[T])(implicit ord: Ordering[T]): Seq[T] = {
     in.foldLeft(Seq.empty[T])((acc, element) => insertElement(acc, element)(ord))
   }
 }

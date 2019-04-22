@@ -40,18 +40,21 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 
-# IntelliJ
+# IntelliJ #
+############
 out/
 .idea/
 *.iml
 *.iws
 **/.idea/
 
-# Mongo Explorer plugin:
+# Mongo Explorer plugin: #
+##########################
 .idea/**/mongoSettings.xml
 
 
-# User-specific stuff:
+# User-specific stuff - IntelliJ #
+##################################
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
@@ -61,7 +64,8 @@ out/
 *.iws
 **/dependency-reduced-pom.xml
 
-# Sensitive or high-churn files:
+# Sensitive or high-churn files #
+#################################
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.xml
@@ -70,40 +74,38 @@ out/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
+# JIRA plugin #
+###############
 atlassian-ide-plugin.xml
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
+# Crashlytics plugin (for Android Studio and IntelliJ) #
+#####################################################
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Maven
+# Maven #
+#########
 log/
 target/
 
-#### scala ####
-*.class
-*.log
-
-# datasets
+# datasets #
+############
 **/datasets/20_newsgroups/*
 **/datasets/20_newsgroups
 
-# Apache Spark meta directories
+# Apache Spark meta directories #
+#################################
 **/spark-warehouse/*
 spark-warehouse/
 **/spark-warehouse
 
-
-# Simple Build Tool
+# Simple Build Tool #
+#####################
+.idea_modules/
 dist/*
 target/
 lib_managed/
@@ -113,3 +115,42 @@ project/plugins/project/
 .history
 .cache
 .lib/
+
+# VS Code #
+###########
+.vscode/*
+.vscode/
+#!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Eclipse IDE #
+###############
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.externalToolBuilders/
+*.launch
+*.pydevproject
+.cproject
+.autotools
+.factorypath
+.buildpath
+.target
+.tern-project
+.texlipse
+.springBeans
+.recommenders/
+.apt_generated/
+.cache-main
+.scala_dependencies
+.worksheet
