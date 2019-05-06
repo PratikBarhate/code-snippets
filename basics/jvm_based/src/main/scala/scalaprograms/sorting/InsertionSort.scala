@@ -7,8 +7,9 @@ object InsertionSort extends Sort {
 
   def main(args: Array[String]): Unit = {
     val unsorted = Seq(1, 23, 4, 100, 6, 8, 94, 2)
+    println(s"Original order of elements: $unsorted")
     val sorted = sort(unsorted)
-    sorted foreach println
+    println(s"Sorted order of elements: $sorted")
   }
 
   private def insertElement[T](xs: Seq[T], element: T)(ord: Ordering[T]): Seq[T] = {

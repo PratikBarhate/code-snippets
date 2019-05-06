@@ -7,12 +7,13 @@ import java.util.Comparator;
 /**
  * This sorting technique is useful when we can make sure that the elements are nearly sorted.
  */
-public class InsertionSort implements Sort {
+public class InsertionSort extends Sort {
 
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1, 23, 4, 100, 6, 8, 94, 2));
+        System.out.println("Original order of elements: " + arr.toString());
         new InsertionSort().sort(arr, Comparator.comparingInt(o -> o));
-        arr.forEach(System.out::println);
+        System.out.println("Sorted order of elements: " + arr.toString());
     }
 
     public <T> void sort(ArrayList<T> in, Comparator<T> comparator) {

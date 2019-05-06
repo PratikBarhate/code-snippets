@@ -37,6 +37,8 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
 | 1      | Insertion Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/scala/scalaprograms/sorting/InsertionSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/InsertionSort.java) |
 | 2      | Shell Sort                            | Sorting                  | [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/ShellSort.java) |
+| 3      | Merge Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/scala/scalaprograms/sorting/MergeSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/MergeSort.java) |
+| 4      | Quick Sort                        | Sorting                  | [Scala](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/scala/scalaprograms/sorting/QuickSort.scala) :: [Java](https://github.com/PratikBarhate/code-snippets/blob/master/basics/jvm_based/src/main/java/javaprograms/sorting/QuickSort.java) |
 
 ### Executing the sample codes
 #### Scala
