@@ -1,0 +1,25 @@
+<assembly>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>target/</directory>
+            <includes>
+                <include>default-${project.version}.jar</include>
+                <include>native-${project.version}.jar</include>
+            </includes>
+            <outputDirectory>/lib</outputDirectory>
+            <fileMode>444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>*.sh</include>
+                <include>*.bat</include>
+            </includes>
+            <fileMode>555</fileMode>
+        </fileSet>
+    </fileSets>
+</assembly>
