@@ -47,7 +47,7 @@ class SimpleMedian extends UserDefinedAggregateFunction {
     }
   }
 
-  override def inputSchema: StructType = StringType(Array(
+  override def inputSchema: StructType = StructType(Array(
     StructField(name = "current_value",
       dataType = DoubleType,
       nullable = false)
