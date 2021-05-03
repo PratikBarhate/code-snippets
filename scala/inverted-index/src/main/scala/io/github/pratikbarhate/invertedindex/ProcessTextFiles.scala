@@ -61,15 +61,6 @@ object ProcessTextFiles {
     )
   }
 
-
-  private def sortedInsertion(xs: Seq[Long], element: Long): Seq[Long] = {
-    xs match {
-      case Nil => Seq(element)
-      case head :: tail if head > element => element :: head :: tail
-      case head :: tail => head +: sortedInsertion(tail, element)
-    }
-  }
-
   /**
    * Method to get the file name and clean the raw text.
    * Steps:-
