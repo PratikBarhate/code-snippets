@@ -1,0 +1,9 @@
+{
+  "spark.executor.cores": "4",
+  "spark.executor.memory": "4g",
+  "spark.default.parallelism": "4",
+  "spark.driver.cores": "1",
+  "spark.driver.memory": "1g",
+  "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+  "spark.executor.extraJavaOptions": "-XX:+UseG1GC"
+}

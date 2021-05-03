@@ -14,11 +14,12 @@ _Some basic theory links and naive notes are in the directory_ [theory](https://
 
 | Sr.No. | Algorithm                             | Type                     | Links                                              |
 |--------|---------------------------------------|--------------------------|----------------------------------------------------|
-| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LogisticReg.scala) :: [Theory](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic)(Find Logistic Regression section) |
-| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/ml/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
-| 3      | CollectMap                            | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/CollectMap.scala) |
-| 4      | Median                               | UDAF for Apache Spark    | [SimpleMedian](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark/src/main/scala/io/github/pratikbarhate/spark/udafs/SimpleMedian.scala) |
+| 1      | Logistic Regression                   | Classification           | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark-snippets/src/main/scala/io/github/pratikbarhate/spark/ml/LogisticReg.scala) :: [Theory](https://github.com/ujjwalkarn/Machine-Learning-Tutorials#topic)(Find Logistic Regression section) |
+| 2      | Latent Dirichlet Allocation           | Document clustering (topic modeling) | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark-snippets/src/main/scala/io/github/pratikbarhate/spark/ml/LDADocClustering.scala) ::   [Theory](https://github.com/Pratik-Barhate/code-snippets/blob/master/theory/LDA_Custering.md) |
+| 3      | CollectMap                            | UDAF for Apache Spark    | [Code](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark-snippets/src/main/scala/io/github/pratikbarhate/spark/udafs/CollectMap.scala) |
+| 4      | Median                               | UDAF for Apache Spark    | [SimpleMedian](https://github.com/PratikBarhate/code-snippets/blob/master/scala/spark-snippets/src/main/scala/io/github/pratikbarhate/spark/udafs/SimpleMedian.scala) |
 | 5      | Searching                              | akka-actors             | [Maven Project](https://github.com/PratikBarhate/code-snippets/blob/master/scala/textsearch) |
+| 6      | Inverted Index     | Spark Core  | [Maven Project](https://github.com/PratikBarhate/code-snippets/blob/master/scala/inverted-index) |
 
 #### Basic Programming
 

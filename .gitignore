@@ -128,7 +128,6 @@ project/plugins/project/
 # Eclipse IDE #
 ###############
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
